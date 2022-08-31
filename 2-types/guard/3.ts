@@ -19,3 +19,11 @@ function print(value: Person | Product) {
         console.log(value.price);
     }
 }
+
+function print1(value: Person | Product) {
+    if('age' in value){
+        console.log(value.age);
+    } else { 
+        console.log(value.price);
+    }
+}
