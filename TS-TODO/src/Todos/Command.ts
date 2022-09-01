@@ -1,6 +1,6 @@
 import { waitForInput } from "../Input";
 import { getIsValidEnumValue } from "../util";
-import { Action, ActionNewTodo, AppState, Priority, PRIORITY_NAME_MAP } from "./type";
+import { Action, ActionDeleteTodo, ActionNewTodo, AppState, Priority, PRIORITY_NAME_MAP } from "./type";
 
 // 추상 클래스 생성 후 이를 상속받아 구체적인 커맨드 생성
 export abstract class Command {
@@ -56,5 +56,24 @@ export class CommandAddTodos extends Command {
     // priority validation method
     static getIsPriority(priority: number): priority is Priority {
         return getIsValidEnumValue(Priority, priority);
+    }
+}
+
+export class CommandDeleteTodo extends Command {
+    constructor(){
+        super('d', '할 일 제거');
+    }
+    async run(state: AppState): Promise<void | ActionDeleteTodo> {
+        // todo list 출력
+        for (const todo of state.todos){
+            const text = todo.toString();
+            console.log(text);
+        }
+        const idStr = await waitForInput('press todo id to delete: ');
+        const id = Number(idStr);
+        return {
+            type: 'deleteTodo',
+            id,
+        }
     }
 }

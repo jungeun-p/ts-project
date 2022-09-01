@@ -25,5 +25,11 @@ export interface ActionNewTodo {
     priority: Priority;
 }
 
+// 상태 변경 삭제 타입
+export interface ActionDeleteTodo {
+    type: 'deleteTodo';
+    id: number;
+}
+
 // 추후에 생성되는 액션 union type
-export type Action = ActionNewTodo; 
+export type Action = ActionNewTodo | ActionDeleteTodo; 

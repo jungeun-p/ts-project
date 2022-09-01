@@ -1,4 +1,4 @@
-import { Command, CommandAddTodos, CommandPrintTodos } from "./Todos/Command";
+import { Command, CommandAddTodos, CommandDeleteTodo, CommandPrintTodos } from "./Todos/Command";
 import { waitForInput } from "./Input";
 import Todo from "./Todos/Todo";
 import { Action, AppState, Priority } from "./Todos/type";
@@ -7,7 +7,8 @@ import { generateKey } from "crypto";
 // command list
 const commands: Command[] = [
     new CommandPrintTodos(),
-    new CommandAddTodos()
+    new CommandAddTodos(),
+    new CommandDeleteTodo(),
 ]
 
 async function main(){
@@ -47,6 +48,11 @@ function getNextState(state: AppState, action: Action): AppState {
             return {
                 ...state, 
                 todos: [...state.todos, new Todo(action.title, action.priority)]
+            }
+        case 'deleteTodo':
+            return {
+                ...state,
+                todos: state.todos.filter(todo => todo.id !== action.id), // type 가드 적용
             }
     }
 }
