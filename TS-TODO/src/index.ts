@@ -1,7 +1,8 @@
 import { Command, CommandAddTodos, CommandPrintTodos } from "./Todos/Command";
 import { waitForInput } from "./Input";
 import Todo from "./Todos/Todo";
-import { AppState, Priority } from "./Todos/type";
+import { Action, AppState, Priority } from "./Todos/type";
+import { generateKey } from "crypto";
 
 // command list
 const commands: Command[] = [
@@ -10,7 +11,7 @@ const commands: Command[] = [
 ]
 
 async function main(){
-    const state: AppState = {
+    let state: AppState = {
         todos: [
             new Todo('test1', Priority.High),
             new Todo('test1', Priority.Medium),
@@ -30,8 +31,22 @@ async function main(){
         // 4. Print command 실행
         const command = commands.find(item => item.key === key);
         if(command){
-            await command.run(state);
+            const action = await command.run(state);
+            if(action){
+                state = getNextState(state, action);
+            }
         } 
     }
 }
 main();
+
+// 현재 상태, 액션을 입력받은 후 다음 상태를 반환. 
+function getNextState(state: AppState, action: Action): AppState {
+    switch(action.type){
+        case 'newTodo':
+            return {
+                ...state, 
+                todos: [...state.todos, new Todo(action.title, action.priority)]
+            }
+    }
+}

@@ -1,4 +1,4 @@
-import { Priority } from "./type";
+import { Priority, PRIORITY_NAME_MAP } from "./type";
 
 // Todo를 생성하는 class
 export default class Todo {
@@ -10,7 +10,8 @@ export default class Todo {
     ){
         Todo.nextId++;
     }
+    // 메서드
     toString(){
-        return `${this.id}) 제목: ${this.title} (우선순위: ${this.priority})`
+        return `${this.id}) 제목: ${this.title} (우선순위: ${PRIORITY_NAME_MAP[this.priority]})`
     }
 }
