@@ -3,6 +3,7 @@ import { waitForInput } from "./Input";
 import Todo from "./Todos/Todo";
 import { Action, AppState, Priority } from "./Todos/type";
 import { generateKey } from "crypto";
+import chalk from "chalk";
 
 // command list
 const commands: Command[] = [
@@ -23,7 +24,7 @@ async function main(){
         console.clear();
         // 1. command list 출력
         for(const command of commands) {
-            console.log(command);
+            console.log(command.toString());
         }
         console.log('⬇️');
         // 3. key 입력, promise를 반환한다
