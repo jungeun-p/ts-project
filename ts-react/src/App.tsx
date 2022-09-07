@@ -3,6 +3,8 @@ import Counter from './Components/Counter';
 import Greeting from './Components/Greeting';
 import MyForm from './Components/MyForm';
 import ReducerSample from './Components/ReducerSample';
+import ReducerSampleContext from './Components/ReducerSampleContext';
+import { SampleProvider } from './SampleContext';
 
 function App() {
   const onClickName = (name: string) => {
@@ -16,13 +18,16 @@ function App() {
     console.log(form);
   }
   return (
-    <div className="App">
-      <p>this is ts-react-tutorial</p>
-      <Greeting name="mark" mark="🔥" onClickName={onClickName}/>
-      <Counter />
-      <MyForm onSubmit={onSubmit}/>
-      <ReducerSample />
-    </div>
+    // <div className="App">
+    //   <p>this is ts-react-tutorial</p>
+    //   <Greeting name="mark" mark="🔥" onClickName={onClickName}/>
+    //   <Counter />
+    //   <MyForm onSubmit={onSubmit}/>
+    //   <ReducerSample />
+    // </div>
+    <SampleProvider>
+      <ReducerSampleContext />
+    </SampleProvider>
   );
 }
 
