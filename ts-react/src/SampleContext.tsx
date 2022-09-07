@@ -70,8 +70,8 @@ export function SampleProvider({ children }: { children: React.ReactNode }){
     )
 }
 
-// state, dispatch의 null 값을 체킹. 
-export function useSampleState(){
+// state와 dispatch를 커스텀
+export function useSampleState(): State {
     const state = useContext(SampleStateContext);
     if(!state) throw new Error('Cannot find SampleProvider');
     return state;
