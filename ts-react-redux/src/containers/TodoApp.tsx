@@ -4,22 +4,22 @@ import { useSelector } from 'react-redux';
 import TodoInsert from '../components/TodoInsert';
 import TodoList from '../components/TodoList';
 import { RootState } from '../modules';
-import { Action as TodoAction } from '../modules/todos';
+import { addTodo, removeTodo, toggleTodo } from '../modules/todos';
 
 const TodoApp = () => {
     const todos = useSelector((state: RootState) => state.Todos);
     const dispatch = useDispatch();
 
     const onInsert = (text: string) => {
-        dispatch(TodoAction.addTodo(text));
+        dispatch(addTodo(text));
     }
 
     const onToggle = (id: number) => {
-        dispatch(TodoAction.toggleTodo(id));
+        dispatch(toggleTodo(id));
     }
 
     const onRemove = (id: number) => {
-        dispatch(TodoAction.removeTodo(id));
+        dispatch(removeTodo(id));
     }
 
     return (

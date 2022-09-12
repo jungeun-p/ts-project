@@ -6,8 +6,8 @@ import TodoApp from './containers/TodoApp';
 function App() {
   return (
     <div className="App">
-      <CounterContainer />
-      {/* <TodoApp /> */}
+      {/* <CounterContainer /> */}
+      <TodoApp />
     </div>
   );
 }
