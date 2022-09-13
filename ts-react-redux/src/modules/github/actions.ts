@@ -1,4 +1,4 @@
-import { AxiosError } from "axios";
+import { Axios, AxiosError } from "axios";
 import { createAsyncAction } from "typesafe-actions";
 // import { createStandardAction } from "typesafe-actions/dist/deprecated/create-standard-action";
 import { GithubProfile } from "../../api/github";
@@ -15,4 +15,4 @@ export const getUserProfileAsync = createAsyncAction(
     GET_USER_PROFILE,
     GET_USER_PROFILE_SUCCESS,
     GET_USER_PROFILE_ERROR
-)<undefined, GithubProfile, AxiosError>();
+)<string, GithubProfile, AxiosError>();

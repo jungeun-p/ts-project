@@ -1,6 +1,5 @@
 import { ActionType } from "typesafe-actions";
 import { GithubProfile } from "../../api/github";
-// import {getUserProfile, getUserProfileError, getUserProfileSuccess, } from './actions';
 import * as actions from './actions';
 
 // action type

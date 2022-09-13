@@ -10,7 +10,7 @@ type GithubProfileProps = {
 
 const GithubProfileInfo = ({ name, thumbnail, bio, blog }: GithubProfileProps) => {
     return (
-        <div className="GithubPrifleInfo">
+        <div className="GithubProfileInfo">
             <div className="profile-head">
                 <img src={thumbnail} alt="user thumbnail"/>
                 <div className="name">{name}</div>

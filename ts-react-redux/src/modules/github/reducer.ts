@@ -10,7 +10,7 @@ const initialState: GithubState = {
     }
 }
 
-const github = createReducer<GithubState, GithubAction>(initialState, {
+const Github = createReducer<GithubState, GithubAction>(initialState, {
     [GET_USER_PROFILE]: state => ({
         ...state,
         userProfile: {
@@ -37,4 +37,4 @@ const github = createReducer<GithubState, GithubAction>(initialState, {
     })
 })
 
-export default github;
+export default Github;

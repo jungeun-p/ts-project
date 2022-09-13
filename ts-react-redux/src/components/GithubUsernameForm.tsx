@@ -15,7 +15,7 @@ const GithubUsernameForm = ({ onSubmitUsername }: GithubUsernameFormProps) => {
         setInput(e.target.value);
     }
     return (
-        <form action="">
+        <form className="GithubUsernameForm" onSubmit={onSubmit}>
             <input onChange={onChange} value={input} placeholder="fill your github account" />
             <button type="submit">inquiry</button>
         </form>
