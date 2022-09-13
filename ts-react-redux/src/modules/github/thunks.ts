@@ -15,9 +15,11 @@ export function getUserProfileThunk(username: string): ThunkAction<
         dispatch(request());
         try {
             const userProfile = await getUserProfile(username);
+            console.log(userProfile);
             dispatch(success(userProfile));
         } catch (e) {
             // dispatch(failure(e));
+            console.log(e);
         }
 
     }
